@@ -10,8 +10,8 @@ This project was created to practice:
 
 ## How It Works
 The board is represented as a 2D grid where:
-- Alive cells are shown as `█`
-- Dead cells are shown as `.`
+- Alive cells are shown as `██`
+- Dead cells are shown as `  `
 
 The simulation updates based on Conway’s rules:
 - A live cell survives with 2 or 3 neighbors
