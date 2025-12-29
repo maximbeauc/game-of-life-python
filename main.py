@@ -1,17 +1,13 @@
 from board import Board
-import time
+from GUI import GameOfLifeGUI
 
 def main():
-    ROWS = 10
-    COLS = 10
-    WAIT_TIME = 0.5
+    ROWS = 20
+    COLS = 20
 
     board = Board(ROWS, COLS)
-
-    while (True):
-        board.display()
-        board.update()
-        time.sleep(WAIT_TIME)
+    gui = GameOfLifeGUI(board)
+    gui.play()
 
 if __name__ == "__main__":
     main()

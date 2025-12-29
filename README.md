@@ -20,7 +20,7 @@ The simulation updates based on Conway’s rules:
 
 ## How to Run
 
-Make sure Python 3 is installed, then run:
+Make sure Python 3 and pygame are installed, then run:
 
 ```bash
 python main.py
