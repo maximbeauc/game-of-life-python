@@ -9,7 +9,7 @@ class Button:
         self.y = pos[1]
         self.w = pos[2]
         self.h = pos[3]
-        self.font = pygame.font.Font(None, 12)
+        self.font = pygame.font.Font(None, 16)
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, self.pos)
