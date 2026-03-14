@@ -19,14 +19,17 @@ class GameOfLifeGUI:
         width = screen_info.current_w * 0.9
         self.size = min(height // self.board.rows, width // self.board.cols)
 
+        # Set up the display with enough space for the game board and the control buttons below it.
         self.screen = pygame.display.set_mode((self.board.cols * self.size, self.board.rows * self.size + 50))
         self.clock = pygame.time.Clock()
 
+        # Create buttons for controlling the game, positioned below the game board.
         self.clear = Button("Clear", (255, 255, 255), (BUTTON_BUFFER, height + BUTTON_BUFFER, BUTTON_WIDTH, BUTTON_HEIGHT))
         self.random = Button("Random", (255, 255, 255), (BUTTON_BUFFER + BUTTON_WIDTH + BUTTON_BUFFER, height + BUTTON_BUFFER, BUTTON_WIDTH, BUTTON_HEIGHT))
-        self.start_stop = Button("Start/Stop", (255, 255, 255), (BUTTON_BUFFER + 2 * (BUTTON_WIDTH + BUTTON_BUFFER), height + BUTTON_BUFFER, BUTTON_WIDTH, BUTTON_HEIGHT))
+        self.start_stop = Button("Start", (255, 255, 255), (BUTTON_BUFFER + 2 * (BUTTON_WIDTH + BUTTON_BUFFER), height + BUTTON_BUFFER, BUTTON_WIDTH, BUTTON_HEIGHT))
         self.step = Button("Step", (255, 255, 255), (BUTTON_BUFFER + 3 * (BUTTON_WIDTH + BUTTON_BUFFER), height + BUTTON_BUFFER, BUTTON_WIDTH, BUTTON_HEIGHT))
 
+    # Handle button events
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -38,6 +41,7 @@ class GameOfLifeGUI:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if self.start_stop.is_clicked(event.pos):
                     self.playing = not self.playing
+                    self.start_stop.set_text("Stop" if self.playing else "Start")
                 elif self.playing:
                     return
                 elif self.clear.is_clicked(event.pos) :
@@ -54,6 +58,7 @@ class GameOfLifeGUI:
                     if (0 <= row < self.board.rows and 0 <= col < self.board.cols):
                         self.board.grid[row][col] = not self.board.grid[row][col]
     
+    # Move forward one state in the game loop, updating the board and rendering the new state.
     def play(self):
         last_update_time = 0
         update_delay = 100
@@ -68,6 +73,7 @@ class GameOfLifeGUI:
             self.render()
             self.clock.tick(60)
 
+    # Render the board
     def render(self):
         self.screen.fill((0, 0, 0))
 

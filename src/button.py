@@ -1,5 +1,8 @@
 import pygame
 
+"""
+A class to represent a button in the GUI
+"""
 class Button:
     def __init__(self, text = "", color = (255, 255, 255), pos = (0, 0, 50, 50)):
         self.text = text

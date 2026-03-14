@@ -2,8 +2,11 @@ from board import Board
 from GUI import GameOfLifeGUI
 
 def main():
-    ROWS = 20, COLS = 20
+    # Customize these values to change the size of the board
+    ROWS = 20
+    COLS = 20
 
+    # Initialize the board and GUI, then start the game loop
     board = Board(ROWS, COLS)
     gui = GameOfLifeGUI(board)
     gui.play()
